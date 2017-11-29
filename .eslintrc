@@ -1,0 +1,21 @@
+{
+    "extends": "standard",
+    "plugins": [
+        "standard"
+    ],
+    "globals": {
+        "console": true,
+        "define": true,
+        "alert": true,
+        "requirejs": true,
+        "basket": true
+    },
+    "rules": {
+        "indent": [2, 4],
+        "no-new": [0],
+        "no-unneeded-ternary": 0,
+        "eqeqeq": 0,
+        "eol-last": 0,
+        "space-before-function-paren": 0,
+    }
+}

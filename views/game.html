@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>game</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/index.css">
+</head>
+<body>
+	<div class="game_container container" id="app" v-cloak>
+		<canvas id="canvas">
+			您的浏览器不支持canvas，请换一个试试
+		</canvas>
+		<h2>千寻拼图</h2>
+		<div class="game clearfix">
+			
+			<div class="game_puzzle">
+				<transition-group name="flip-list" tag="ul" :class="{showCover : !playing}">
+					<li v-for="(item, i) in imgArr" :key="item.index" ref="li" :class="{active : touchedIndex == i}"><img :src="item.src" :index="item.index" @touchstart="handdleTouch(i)"><div class="cover" @touchstart="handdleTouch(i)"></div></li>
+				</transition-group>
+			</div>
+			<div class="game_counter clearfix">
+				<div class="left">
+					<img src="../static/images/clock.png" alt="" class="clock">
+					<span>{{time}}秒</span>
+				</div>
+				<div class="timer">
+					<div class="progress" ref="progress"></div>
+				</div>
+			</div>
+
+			
+			<div class="start" v-show="!playing" @click="startGame">
+				<img src="../static/images/game_start_btn.png">
+			</div>
+		</div>
+
+		<div class="toast default" v-show="showToast">
+	      <div class="toast-word"> {{message}} </div>
+	    </div>
+	</div>
+
+	<script src="https://cdn.bootcss.com/vue/2.5.9/vue.js"></script>
+	<script type="text/javascript" src="../static/js/game.js"></script>
+</body>
+</html>
